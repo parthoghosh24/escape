@@ -1,0 +1,22 @@
+PATH
+  remote: .
+  specs:
+    escape (0.0.1)
+      gosu (>= 0.9.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    gosu (0.11.2)
+    rake (10.5.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.12)
+  escape!
+  rake (~> 10.0)
+
+BUNDLED WITH
+   1.12.5

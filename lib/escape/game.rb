@@ -7,8 +7,13 @@ module Escape
     }
 
     def initialize
-      super 1280, 720, fullscreen: true
+      @width = 1280
+      @height = 720
+      super @width, @height, fullscreen: false
       self.caption = "Escape v0.1.0"
+      @text_to_draw=""
+      @message = "Partho G presents"
+      @count = 0
       self.load_assets
     end
 
@@ -16,11 +21,14 @@ module Escape
       self.show
     end
 
-    def draw
+    def update
+      @text_to_draw = @text_to_draw+ @message[@count] if @count < @message.length
+      @count+=1
+    end
 
-      @font.draw("P", 20, 10, 3, 1, 1, Gosu::Color::WHITE)
-      @font.draw("a", 60, 10, 3, 1, 1, Gosu::Color::WHITE)
-      @font.draw("r", 100, 10, 3, 1, 1, Gosu::Color::WHITE)
+    def draw
+      @font.draw(@text_to_draw, (@width/2), (@height/2), 3, 1, 1, Gosu::Color::WHITE)
+      sleep 0.1
     end
 
     def button_up(key)
@@ -28,7 +36,7 @@ module Escape
     end
 
     def load_assets
-      @font = Gosu::Font.new(self, FONT_ASSETS[:font],80)
+      @font = Gosu::Font.new(self, FONT_ASSETS[:font],40)
     end
 
   end
